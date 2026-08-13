@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
+import './nav.css';
 import { navigation, site } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -22,17 +23,48 @@ const organizationJsonLd = {
   contactPoint:{'@type':'ContactPoint',telephone:site.phone,contactType:'sales',areaServed:'IN',availableLanguage:['English','Hindi']}
 };
 
+const mainNavigation = navigation.filter(item => !['/commpolar','/shield-boxes'].includes(item.href));
+const productNavigation = [
+  { href:'/products', label:'All Products', description:'Browse the complete RF Equipment portfolio' },
+  { href:'/commpolar', label:'Commpolar', description:'Optical, PON, BOB and telecom test equipment' },
+  { href:'/shield-boxes', label:'RF Shield Boxes', description:'Manual and pneumatic RF isolation enclosures' }
+];
+
+function DesktopNavigation(){
+  return <nav className="nav" aria-label="Main navigation">
+    {mainNavigation.map(item => item.href === '/products' ?
+      <div className="nav-dropdown" key={item.href}>
+        <Link className="nav-parent" href="/products">Products <span className="chevron" aria-hidden="true">▼</span></Link>
+        <div className="dropdown-menu">
+          {productNavigation.map(product => <Link key={product.href} href={product.href}><strong>{product.label}</strong><span>{product.description}</span></Link>)}
+        </div>
+      </div>
+      : <Link key={item.href} href={item.href}>{item.label}</Link>)}
+  </nav>;
+}
+
+function MobileNavigation(){
+  return <nav>
+    {mainNavigation.map(item => item.href === '/products' ?
+      <div className="mobile-product-group" key={item.href}>
+        <Link href="/products">Products</Link>
+        <div className="mobile-product-links"><Link href="/commpolar">Commpolar</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div>
+      </div>
+      : <Link key={item.href} href={item.href}>{item.label}</Link>)}
+  </nav>;
+}
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organizationJsonLd)}} />
     <div className="topbar"><div className="container topbar-inner"><span>RF · Wireless · Optical · Telecom Production Test</span><span><a href={`mailto:${site.email}`}>{site.email}</a> · <a href={site.whatsapp}>{site.phoneDisplay}</a></span></div></div>
     <header className="site-header"><div className="container nav-wrap">
       <Link className="brand" href="/" aria-label="RF Equipment home"><img src="/assets/rf-equipment-logo.webp" alt="RF Equipment — Test, Measure, Connect" /></Link>
-      <nav className="nav" aria-label="Main navigation">{navigation.map(item=><Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
-      <div className="nav-cta"><Link className="btn btn-primary btn-small" href="/contact">Request a Quote</Link><details className="mobile-menu"><summary aria-label="Open menu"><span/><span/><span/></summary><nav>{navigation.map(item=><Link key={item.href} href={item.href}>{item.label}</Link>)}</nav></details></div>
+      <DesktopNavigation />
+      <div className="nav-cta"><Link className="btn btn-primary btn-small" href="/contact">Request a Quote</Link><details className="mobile-menu"><summary aria-label="Open menu"><span/><span/><span/></summary><MobileNavigation /></details></div>
     </div></header>
     <main>{children}</main>
-    <footer className="site-footer"><div className="container footer-main"><div><img className="footer-logo" src="/assets/rf-equipment-logo.webp" alt="RF Equipment"/><p>Test, measurement and production automation solutions for RF, wireless, optical and telecom applications in India.</p></div><div><h3>Solutions</h3><div className="footer-links"><Link href="/rf-calibration">RF Calibration</Link><Link href="/solutions">Turnkey Manufacturing</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div></div><div><h3>Partner</h3><div className="footer-links"><Link href="/commpolar">Commpolar India</Link><Link href="/products">All Products</Link><Link href="/services">Services</Link></div></div><div><h3>Contact</h3><div className="footer-links"><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.whatsapp}>WhatsApp {site.phoneDisplay}</a><Link href="/contact">Request Quotation</Link></div></div></div><div className="container footer-bottom"><span>© 2026 RF Equipment. All rights reserved.</span><span>Product names, model references and trademarks belong to their respective owners.</span></div></footer>
+    <footer className="site-footer"><div className="container footer-main"><div><img className="footer-logo" src="/assets/rf-equipment-logo.webp" alt="RF Equipment"/><p>Test, measurement and production automation solutions for RF, wireless, optical and telecom applications in India.</p></div><div><h3>Solutions</h3><div className="footer-links"><Link href="/rf-calibration">RF Calibration</Link><Link href="/solutions">Turnkey Manufacturing</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div></div><div><h3>Products</h3><div className="footer-links"><Link href="/products">All Products</Link><Link href="/commpolar">Commpolar India</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div></div><div><h3>Contact</h3><div className="footer-links"><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.whatsapp}>WhatsApp {site.phoneDisplay}</a><Link href="/contact">Request Quotation</Link></div></div></div><div className="container footer-bottom"><span>© 2026 RF Equipment. All rights reserved.</span><span>Product names, model references and trademarks belong to their respective owners.</span></div></footer>
     <a className="whatsapp" href={site.whatsapp} aria-label="Chat with RF Equipment on WhatsApp">WhatsApp</a>
   </body></html>;
 }
