@@ -1,25 +1,42 @@
-# RF Equipment Website
+# RF Equipment India — Next.js Website
 
-Responsive static website for **RF Equipment** — test, measurement and telecom manufacturing solutions in India.
+The RF Equipment website has been migrated from static HTML to **Next.js App Router + TypeScript** while preserving the existing branding, product content and images.
 
-## Main sections
-- Home
-- Products
-- Commpolar — Authorized Partner for India
-- RF Shield Boxes
-- RF Calibration Solution
-- Telecom Manufacturing Turnkey Solutions
-- Services
-- Resources
-- About
-- Contact / RFQ
+## Included
+- Server/static rendered marketing pages
+- RF / Wi-Fi Calibration solution page
+- MediaTek, Realtek, Qualcomm and Broadcom platform positioning
+- Turnkey FTTH, ONU/ONT, router and broadband manufacturing solutions
+- Commpolar India catalogue with dedicated model URLs
+- RF shield box catalogue with dedicated model URLs
+- SEO metadata, canonical URLs, redirects, sitemap and robots metadata
+- Product and organization structured data
+- Contact / RFQ form with server-side email endpoint and email fallback
 
-## Contact
-- Email: info@rfequipment.in
-- WhatsApp: +91 97177 02842
+## Local development
+```bash
+npm install
+npm run dev
+```
 
-## RF calibration and telecom manufacturing
-The website includes RF/Wi‑Fi calibration support for MediaTek, Realtek, Qualcomm and Broadcom platforms, plus turnkey production test solutions for FTTH/FTTx, ONU/ONT, routers, gateways and broadband/network equipment.
+Production validation:
+```bash
+npm run build
+npm start
+```
+
+## Environment variables
+Copy `.env.example` to `.env.local` and configure:
+```env
+NEXT_PUBLIC_SITE_URL=https://rfequipment.in
+RESEND_API_KEY=
+RFQ_TO_EMAIL=info@rfequipment.in
+RFQ_FROM_EMAIL=RF Equipment Website <website@rfequipment.in>
+```
+
+If `RESEND_API_KEY` is not configured, the RFQ form falls back to a pre-filled email to `info@rfequipment.in`.
 
 ## Deployment
-This is a static HTML/CSS/JavaScript site. `index.html` is the entry page and it can be hosted on GitHub Pages, Netlify, Vercel, cPanel or another static web host.
+Recommended deployment target: Vercel. Connect this GitHub repository, add the environment variables above, and deploy the `main` branch.
+
+The previous static HTML version is preserved on the `static-html-backup` branch.
