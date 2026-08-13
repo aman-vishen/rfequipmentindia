@@ -1,10 +1,36 @@
 import type { MetadataRoute } from 'next';
 import { commpolarProducts, shieldBoxes, site } from '@/lib/data';
-export default function sitemap():MetadataRoute.Sitemap{
- const routes=['','/products','/solutions','/rf-calibration','/commpolar','/shield-boxes','/services','/about','/contact'];
- return [
-  ...routes.map(path=>({url:`${site.url}${path}`,lastModified:new Date(),changeFrequency:path===''?'weekly':'monthly' as const,priority:path===''?1:0.8})),
-  ...commpolarProducts.map(p=>({url:`${site.url}/commpolar/${p.slug}`,lastModified:new Date(),changeFrequency:'monthly' as const,priority:0.7})),
-  ...shieldBoxes.map(p=>({url:`${site.url}/shield-boxes/${p.slug}`,lastModified:new Date(),changeFrequency:'monthly' as const,priority:0.7}))
- ];
+
+type SitemapEntry = MetadataRoute.Sitemap[number];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
+  const staticRoutes: SitemapEntry[] = [
+    { url: site.url, lastModified, changeFrequency: 'weekly', priority: 1 },
+    { url: `${site.url}/products`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/solutions`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/rf-calibration`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/commpolar`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/shield-boxes`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/services`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/about`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/contact`, lastModified, changeFrequency: 'monthly', priority: 0.8 }
+  ];
+
+  const commpolarRoutes: SitemapEntry[] = commpolarProducts.map((product) => ({
+    url: `${site.url}/commpolar/${product.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.7
+  }));
+
+  const shieldBoxRoutes: SitemapEntry[] = shieldBoxes.map((product) => ({
+    url: `${site.url}/shield-boxes/${product.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.7
+  }));
+
+  return [...staticRoutes, ...commpolarRoutes, ...shieldBoxRoutes];
 }
