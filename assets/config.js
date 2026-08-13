@@ -1,0 +1,1 @@
+window.RF_EQUIPMENT_CONFIG={companyName:'RF Equipment',email:'info@rfequipment.in',phone:'+91 97177 02842',whatsapp:'+91 97177 02842'};
