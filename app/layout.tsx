@@ -23,34 +23,52 @@ const organizationJsonLd = {
   contactPoint:{'@type':'ContactPoint',telephone:site.phone,contactType:'sales',areaServed:'IN',availableLanguage:['English','Hindi']}
 };
 
-const mainNavigation = navigation.filter(item => !['/commpolar','/shield-boxes'].includes(item.href));
+const mainNavigation = navigation.filter(item => !['/commpolar','/shield-boxes','/rf-calibration'].includes(item.href));
+
 const productNavigation = [
   { href:'/products', label:'All Products', description:'Browse the complete RF Equipment portfolio' },
   { href:'/commpolar', label:'Commpolar', description:'Optical, PON, BOB and telecom test equipment' },
   { href:'/shield-boxes', label:'RF Shield Boxes', description:'Manual and pneumatic RF isolation enclosures' }
 ];
 
+const solutionNavigation = [
+  { href:'/solutions', label:'All Solutions', description:'Complete telecom manufacturing and test solutions' },
+  { href:'/rf-calibration', label:'Wi-Fi Calibration', description:'RF calibration for MediaTek, Realtek, Qualcomm and Broadcom platforms' }
+];
+
+function DropdownNav({label,href,items}:{label:string;href:string;items:{href:string;label:string;description:string}[]}){
+  return <div className="nav-dropdown">
+    <Link className="nav-parent" href={href}>{label} <span className="chevron" aria-hidden="true">▼</span></Link>
+    <div className="dropdown-menu">
+      {items.map(item => <Link key={item.href} href={item.href}><strong>{item.label}</strong><span>{item.description}</span></Link>)}
+    </div>
+  </div>;
+}
+
 function DesktopNavigation(){
   return <nav className="nav" aria-label="Main navigation">
-    {mainNavigation.map(item => item.href === '/products' ?
-      <div className="nav-dropdown" key={item.href}>
-        <Link className="nav-parent" href="/products">Products <span className="chevron" aria-hidden="true">▼</span></Link>
-        <div className="dropdown-menu">
-          {productNavigation.map(product => <Link key={product.href} href={product.href}><strong>{product.label}</strong><span>{product.description}</span></Link>)}
-        </div>
-      </div>
-      : <Link key={item.href} href={item.href}>{item.label}</Link>)}
+    {mainNavigation.map(item => {
+      if(item.href === '/products') return <DropdownNav key={item.href} label="Products" href="/products" items={productNavigation}/>;
+      if(item.href === '/solutions') return <DropdownNav key={item.href} label="Solutions" href="/solutions" items={solutionNavigation}/>;
+      return <Link key={item.href} href={item.href}>{item.label}</Link>;
+    })}
   </nav>;
+}
+
+function MobileGroup({label,href,items}:{label:string;href:string;items:{href:string;label:string}[]}){
+  return <div className="mobile-product-group">
+    <Link href={href}>{label}</Link>
+    <div className="mobile-product-links">{items.filter(item=>item.href!==href).map(item=><Link key={item.href} href={item.href}>{item.label}</Link>)}</div>
+  </div>;
 }
 
 function MobileNavigation(){
   return <nav>
-    {mainNavigation.map(item => item.href === '/products' ?
-      <div className="mobile-product-group" key={item.href}>
-        <Link href="/products">Products</Link>
-        <div className="mobile-product-links"><Link href="/commpolar">Commpolar</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div>
-      </div>
-      : <Link key={item.href} href={item.href}>{item.label}</Link>)}
+    {mainNavigation.map(item => {
+      if(item.href === '/products') return <MobileGroup key={item.href} label="Products" href="/products" items={productNavigation}/>;
+      if(item.href === '/solutions') return <MobileGroup key={item.href} label="Solutions" href="/solutions" items={solutionNavigation}/>;
+      return <Link key={item.href} href={item.href}>{item.label}</Link>;
+    })}
   </nav>;
 }
 
@@ -64,7 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <div className="nav-cta"><Link className="btn btn-primary btn-small" href="/contact">Request a Quote</Link><details className="mobile-menu"><summary aria-label="Open menu"><span/><span/><span/></summary><MobileNavigation /></details></div>
     </div></header>
     <main>{children}</main>
-    <footer className="site-footer"><div className="container footer-main"><div><img className="footer-logo" src="/assets/rf-equipment-logo.webp" alt="RF Equipment"/><p>Test, measurement and production automation solutions for RF, wireless, optical and telecom applications in India.</p></div><div><h3>Solutions</h3><div className="footer-links"><Link href="/rf-calibration">RF Calibration</Link><Link href="/solutions">Turnkey Manufacturing</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div></div><div><h3>Products</h3><div className="footer-links"><Link href="/products">All Products</Link><Link href="/commpolar">Commpolar India</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div></div><div><h3>Contact</h3><div className="footer-links"><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.whatsapp}>WhatsApp {site.phoneDisplay}</a><Link href="/contact">Request Quotation</Link></div></div></div><div className="container footer-bottom"><span>© 2026 RF Equipment. All rights reserved.</span><span>Product names, model references and trademarks belong to their respective owners.</span></div></footer>
+    <footer className="site-footer"><div className="container footer-main"><div><img className="footer-logo" src="/assets/rf-equipment-logo.webp" alt="RF Equipment"/><p>Test, measurement and production automation solutions for RF, wireless, optical and telecom applications in India.</p></div><div><h3>Solutions</h3><div className="footer-links"><Link href="/rf-calibration">Wi-Fi Calibration</Link><Link href="/solutions">Turnkey Manufacturing</Link></div></div><div><h3>Products</h3><div className="footer-links"><Link href="/products">All Products</Link><Link href="/commpolar">Commpolar India</Link><Link href="/shield-boxes">RF Shield Boxes</Link></div></div><div><h3>Contact</h3><div className="footer-links"><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.whatsapp}>WhatsApp {site.phoneDisplay}</a><Link href="/contact">Request Quotation</Link></div></div></div><div className="container footer-bottom"><span>© 2026 RF Equipment. All rights reserved.</span><span>Product names, model references and trademarks belong to their respective owners.</span></div></footer>
     <a className="whatsapp" href={site.whatsapp} aria-label="Chat with RF Equipment on WhatsApp">WhatsApp</a>
   </body></html>;
 }
