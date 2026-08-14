@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">RF Equipment 8-DUT Wi-Fi calibration station</title>
+<desc id="desc">Production RF calibration station with RF equipment, network switch, PC, monitor and eight independent RF shield boxes.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#eef4f8"/><stop offset="1" stop-color="#dbe5ec"/></linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fbfc"/><stop offset=".45" stop-color="#dfe5e9"/><stop offset="1" stop-color="#b9c3ca"/></linearGradient>
+  <linearGradient id="navy" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#092a5c"/><stop offset="1" stop-color="#0a4b8f"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#061a3a" flood-opacity=".18"/></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<rect x="0" y="0" width="1200" height="230" fill="#e8eef2"/>
+<g opacity=".55" stroke="#b4c1ca" stroke-width="2"><path d="M0 70h1200M0 150h1200"/><path d="M160 0v230M400 0v230M640 0v230M880 0v230M1080 0v230"/></g>
+<rect x="330" y="42" width="540" height="54" rx="5" fill="url(#navy)" filter="url(#shadow)"/>
+<text x="600" y="77" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="white">RF EQUIPMENT WIFI CALIBRATION STATION</text>
+<rect x="45" y="218" width="1110" height="22" rx="3" fill="#9ca9b2"/>
+<rect x="45" y="240" width="1110" height="122" fill="#c7d0d6" stroke="#8d9ba5"/>
+<rect x="62" y="258" width="1076" height="86" rx="3" fill="#e8edf0"/>
+<!-- RF instrument -->
+<g filter="url(#shadow)"><rect x="150" y="270" width="300" height="90" rx="7" fill="url(#metal)" stroke="#8d9ba5"/><rect x="170" y="287" width="78" height="34" rx="4" fill="#0a3264"/><text x="209" y="310" text-anchor="middle" font-family="Arial" font-size="21" font-weight="700" fill="white">RF</text><text x="170" y="338" font-family="Arial" font-size="11" fill="#345">EQUIPMENT</text></g>
+<g fill="#e5ebef" stroke="#697985" stroke-width="2"> 
+  <circle cx="285" cy="319" r="9"/><circle cx="320" cy="319" r="9"/><circle cx="355" cy="319" r="9"/><circle cx="390" cy="319" r="9"/><circle cx="425" cy="319" r="9"/>
+</g>
+<!-- switch -->
+<g filter="url(#shadow)"><rect x="505" y="304" width="170" height="52" rx="4" fill="#182530"/><rect x="520" y="318" width="126" height="20" rx="2" fill="#233947"/></g>
+<g fill="#77c5ff"> <rect x="525" y="322" width="10" height="8"/><rect x="540" y="322" width="10" height="8"/><rect x="555" y="322" width="10" height="8"/><rect x="570" y="322" width="10" height="8"/><rect x="585" y="322" width="10" height="8"/><rect x="600" y="322" width="10" height="8"/><rect x="615" y="322" width="10" height="8"/><rect x="630" y="322" width="10" height="8"/></g>
+<!-- pc monitor -->
+<g filter="url(#shadow)"><rect x="712" y="260" width="82" height="104" rx="5" fill="#202a31"/><rect x="818" y="246" width="235" height="132" rx="7" fill="#26323a"/><rect x="829" y="257" width="213" height="105" fill="#dfeaf4"/></g>
+<g fill="#87b6df"><rect x="840" y="267" width="42" height="34"/><rect x="889" y="267" width="42" height="34"/><rect x="938" y="267" width="42" height="34"/><rect x="987" y="267" width="42" height="34"/><rect x="840" y="309" width="42" height="34"/><rect x="889" y="309" width="42" height="34"/><rect x="938" y="309" width="42" height="34"/><rect x="987" y="309" width="42" height="34"/></g>
+<rect x="863" y="380" width="160" height="10" rx="4" fill="#2a3339"/>
+<!-- lower bench -->
+<rect x="28" y="430" width="1144" height="25" fill="#87969f"/>
+<rect x="28" y="455" width="1144" height="224" fill="#74858e"/>
+<rect x="45" y="470" width="1110" height="190" fill="#1b6855"/>
+<!-- shield boxes -->
+<g font-family="Arial,sans-serif" filter="url(#shadow)">
+  <g transform="translate(58 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 1</text></g>
+  <g transform="translate(195 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 2</text></g>
+  <g transform="translate(332 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 3</text></g>
+  <g transform="translate(469 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 4</text></g>
+  <g transform="translate(606 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 5</text></g>
+  <g transform="translate(743 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 6</text></g>
+  <g transform="translate(880 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 7</text></g>
+  <g transform="translate(1017 485)"><rect width="125" height="150" rx="5" fill="url(#metal)" stroke="#8997a0"/><rect x="32" y="65" width="61" height="12" rx="4" fill="#222"/><rect x="55" y="78" width="16" height="34" rx="3" fill="#111"/><text x="62.5" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#263746">DUT 8</text></g>
+</g>
+<!-- blue RF/network cabling -->
+<g fill="none" stroke="#0876d1" stroke-width="5" stroke-linecap="round" opacity=".95">
+<path d="M285 328 C285 410,120 400,120 485"/><path d="M320 328 C320 405,257 405,257 485"/><path d="M355 328 C355 410,394 400,394 485"/><path d="M390 328 C390 410,531 400,531 485"/><path d="M425 328 C425 395,668 400,668 485"/><path d="M535 334 C535 410,805 395,805 485"/><path d="M565 334 C565 420,942 390,942 485"/><path d="M595 334 C595 430,1079 385,1079 485"/>
+</g>
+<!-- frame/legs -->
+<g fill="#a7b2b9"><rect x="38" y="675" width="24" height="125"/><rect x="1138" y="675" width="24" height="125"/><rect x="575" y="675" width="24" height="125"/><rect x="28" y="690" width="1144" height="20"/></g>
+<text x="600" y="755" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#354b5d">8 independent shielded DUT positions · RF instrument · managed network · automated production software</text>
+</svg>
